@@ -321,6 +321,7 @@ function rand(max) {
     drawEndMethod();
   }
   
+
   function Player(maze, c, _cellsize, onComplete, sprite = null) {
     var ctx = c.getContext("2d");
     var drawSprite;
@@ -342,7 +343,7 @@ function rand(max) {
       cellSize = _cellsize;
       drawSpriteImg(cellCoords);
     };
-  
+    
     function drawSpriteCircle(coord) {
       ctx.beginPath();
       ctx.fillStyle = "yellow";
@@ -399,6 +400,7 @@ function rand(max) {
         case 37: // west
           if (cell.w == true) {
             removeSprite(cellCoords);
+            document.getElementById("directionInput").value = "left";
             cellCoords = {
               x: cellCoords.x - 1,
               y: cellCoords.y
@@ -410,6 +412,7 @@ function rand(max) {
         case 38: // north
           if (cell.n == true) {
             removeSprite(cellCoords);
+            document.getElementById("directionInput").value = "up";
             cellCoords = {
               x: cellCoords.x,
               y: cellCoords.y - 1
@@ -421,6 +424,7 @@ function rand(max) {
         case 39: // east
           if (cell.e == true) {
             removeSprite(cellCoords);
+            document.getElementById("directionInput").value = "right";
             cellCoords = {
               x: cellCoords.x + 1,
               y: cellCoords.y
@@ -432,6 +436,7 @@ function rand(max) {
         case 40: // south
           if (cell.s == true) {
             removeSprite(cellCoords);
+            document.getElementById("directionInput").value = "down";
             cellCoords = {
               x: cellCoords.x,
               y: cellCoords.y + 1
@@ -481,7 +486,7 @@ function rand(max) {
         threshold: 0
       });
     };
-  
+    
     this.unbindKeyDown = function() {
       window.removeEventListener("keydown", check, false);
       $("#view").swipe("destroy");
@@ -583,3 +588,5 @@ function rand(max) {
       document.getElementById("mazeContainer").style.opacity = "100";
     }
   }
+
+  
